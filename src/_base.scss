@@ -1,0 +1,18 @@
+$bg: #222;
+$fg: #eee;
+@mixin sflex {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+@mixin glowBox($angle) {
+    background-color: white;
+    transform: rotateZ($angle);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: -0.2rem -0.2rem 1rem white, 2rem 2rem 1rem black;
+    border: 0.1rem outset $fg;
+    color: $bg;
+}

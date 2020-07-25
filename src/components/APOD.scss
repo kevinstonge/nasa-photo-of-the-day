@@ -1,0 +1,28 @@
+@import "../base";
+.apod_container {
+    @include sflex;
+    .image_container {
+        @include glowBox(-2deg);
+        width: 60vw;
+        img {
+            padding: 1rem;
+            padding-bottom: 0;
+            width: 100%;
+        }
+        .title_container {
+            width: 100%;
+            color: black;
+            h2 {
+                margin: 0;
+                padding-top: 0.5rem;
+                padding-bottom: 1.5rem;
+            }
+        }
+    }
+    .explanation_container {
+        width: 60vw;
+        margin-top: 4rem;
+        @include glowBox(2deg);
+        font-size: 0.9rem;
+    }
+}

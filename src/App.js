@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.sass";
+import "./App.scss";
 import Header from "./components/Header";
 import APOD from "./components/APOD";
 // import axios from "axios";

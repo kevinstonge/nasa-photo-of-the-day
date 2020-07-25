@@ -1,0 +1,6 @@
+@import './_base.scss';
+.App {
+  text-align: center;
+  @include sflex;
+  margin: auto;
+}
