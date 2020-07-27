@@ -10,8 +10,9 @@ const APOD = props => {
             <div className="apod_container">
                 {/* break this out into a component */}
                 <div className="apod_controls">
+                    <p className="apod_control">&lt; previous</p>
                     <p className="apod_control">select date</p>
-                    <p className="apod_control">&gt;</p>
+                    <p className="apod_control">&gt; next</p>
                 </div>
                 {/* end component */}
                 <div className="image_container">
