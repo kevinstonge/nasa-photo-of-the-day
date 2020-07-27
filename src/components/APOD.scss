@@ -1,13 +1,29 @@
 @import "../base";
 .apod_container {
     @include sflex;
-    .image_container {
-        @include glowBox(0deg);
+    .apod_controls {
         width: 60vw;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .apod_control {
+            @include glowBox(#eae);
+            background-color: #222;
+            color: #aea;
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+        }
+    }
+    .image_container {
+        @include glowBox(white);
+        width: 60vw;
+        padding: 1rem;
         img {
-            padding: 1rem;
-            padding-bottom: 0;
+            padding: 0;
             width: 100%;
+            border-radius: 0.5rem;
+            border: 0.1rem inset white;
         }
         .title_container {
             width: 100%;
@@ -21,8 +37,12 @@
     }
     .explanation_container {
         width: 60vw;
-        margin-top: 4rem;
-        @include glowBox(0deg);
+        margin-top: 2rem;
+        @include glowBox(#eae);
+        background-color: #222;
+        color: #eae;
         font-size: 0.9rem;
+        padding: 0 1rem;
+        text-align: left;
     }
 }

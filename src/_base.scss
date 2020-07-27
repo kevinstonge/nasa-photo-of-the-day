@@ -7,12 +7,12 @@ $fg: #eee;
     justify-content: center;
     align-items: center;
 }
-@mixin glowBox($angle) {
+@mixin glowBox($glowColor) {
     background-color: white;
-    transform: rotateZ($angle);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    box-shadow: -0.2rem -0.2rem 1rem white, 2rem 2rem 1rem black;
-    border: 0.1rem outset $fg;
+    box-shadow: -0.1rem -0.1rem 0.8rem $glowColor, inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
+    &:hover {
+        box-shadow: -0.1rem -0.1rem 1rem $glowColor, inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
+    }
+    border-radius: 0.5rem;
     color: $bg;
 }
