@@ -1,6 +1,12 @@
 @import "../base";
 .apod_container {
     @include sflex;
+    .calendar_container {
+        position: fixed;
+        top: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .apod_controls {
         width: 60vw;
         margin-bottom: 2rem;

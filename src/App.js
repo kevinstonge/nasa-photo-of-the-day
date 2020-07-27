@@ -2,8 +2,8 @@ import React, {useState, useEffect} from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import APOD from "./components/APOD";
-// import axios from "axios";
-// import formatDate from "./formatDate";
+import axios from "axios";
+import formatDate from "./formatDate";
 
 function App() {
   const [date, setDate] = useState(new Date());
@@ -11,7 +11,7 @@ function App() {
   useEffect(()=>{
     //production code
     // const getData = async() => {
-    //   const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_APOD_API_KEY}&date=${formatDate(date)}`).then(r=>setData(r));
+    //   axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_APOD_API_KEY}&date=${formatDate(date)}`).then(r=>setData(r));
     // }
     // getData();
     //end production code
