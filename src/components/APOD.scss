@@ -2,7 +2,7 @@
 .apod_container {
     @include sflex;
     .image_container {
-        @include glowBox(-2deg);
+        @include glowBox(0deg);
         width: 60vw;
         img {
             padding: 1rem;
@@ -22,7 +22,7 @@
     .explanation_container {
         width: 60vw;
         margin-top: 4rem;
-        @include glowBox(2deg);
+        @include glowBox(0deg);
         font-size: 0.9rem;
     }
 }
