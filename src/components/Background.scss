@@ -1,0 +1,21 @@
+.star {
+    background-color: white;
+    position: fixed;
+    border-radius: 50%;
+    width: 1px;
+    height: 1px;
+    z-index: -10;
+    box-shadow: 0 0 0.1rem 0.1rem white;
+    animation-name: pulse;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@keyframes pulse {
+    0% {box-shadow: 0 0 0.01px 0.01px white;}
+    50% {box-shadow: 0 0 7px 3px white;}
+    100% {box-shadow: 0 0 0.01px 0.01px white;}
+}

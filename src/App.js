@@ -2,7 +2,10 @@ import React, {useState, useEffect} from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import APOD from "./components/APOD";
+import Background from "./components/Background";
+// eslint-disable-next-line
 import axios from "axios";
+// eslint-disable-next-line
 import formatDate from "./formatDate";
 
 function App() {
@@ -48,6 +51,7 @@ function App() {
     <div className="App">
       <Header />
       <APOD data={data} setDate={setDate} date={date} />
+      <Background />
     </div>
   );
 }

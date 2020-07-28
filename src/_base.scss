@@ -9,7 +9,7 @@ $fg: #eee;
 }
 @mixin glowBox($glowColor) {
     background-color: white;
-    box-shadow: -0.1rem -0.1rem 0.8rem $glowColor, inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
+    box-shadow: -0.1rem -0.1rem 0.8rem 0 $glowColor, inset -0.1rem -0.1rem 0.1rem 0 darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem 0 lighten($glowColor,20%);
     border-radius: 0.5rem;
     color: $bg;
 }
