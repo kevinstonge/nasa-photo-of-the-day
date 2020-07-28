@@ -6,6 +6,12 @@
         top: 5rem;
         left: 50%;
         transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        @include glowBox(white);
+        button {
+            padding: 0.5rem;
+        }
     }
     .apod_controls {
         width: 60vw;
@@ -15,10 +21,12 @@
         justify-content: space-evenly;
         .apod_control {
             @include glowBox(#eae);
+            @include glowBoxHover(#eae);
             background-color: #222;
             color: #aea;
             padding: 0.5rem 1rem;
             border-radius: 50%;
+            cursor: pointer;
         }
     }
     .image_container {

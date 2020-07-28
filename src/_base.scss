@@ -10,9 +10,12 @@ $fg: #eee;
 @mixin glowBox($glowColor) {
     background-color: white;
     box-shadow: -0.1rem -0.1rem 0.8rem $glowColor, inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
-    &:hover {
-        box-shadow: -0.1rem -0.1rem 1rem $glowColor, inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
-    }
     border-radius: 0.5rem;
     color: $bg;
+}
+
+@mixin glowBoxHover($glowColor) {
+    &:hover {
+        box-shadow: -0.1rem -0.1rem 1.5rem lighten($glowColor,10%), inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
+    }
 }
