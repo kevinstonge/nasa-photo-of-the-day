@@ -11,7 +11,20 @@ function App() {
   useEffect(()=>{
     //production code
     // const getData = async() => {
-    //   axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_APOD_API_KEY}&date=${formatDate(date)}`).then(r=>setData(r));
+    //   axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_APOD_API_KEY}&date=${formatDate(date)}`).then(r=>setData(r)).catch(e=>{
+    //     console.log(e);
+    //     setData({
+    //       data: {
+    //         title: "error: no image found",
+    //         explanation: "something went wrong, sorry",
+    //         date: "",
+    //         copyright: "",
+    //         hdurl: "",
+    //         media_type: "image",
+    //         url: "black.png"
+    //       }
+    //     })
+    //   });
     // }
     // getData();
     //end production code

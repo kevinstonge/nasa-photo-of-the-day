@@ -31,7 +31,7 @@ const APOD = props => {
                 <div className="image_container">
                     {/* TODO: replace static image reference with props reference for final build */}
                     {/* <img src={props.data.data.url} alt={props.data.data.title}/> */}
-                    <img src="169A2911Dai1024.jpg" alt={props.data.data.title}></img>
+                    <img src={props.data.data.url} alt={props.data.data.title}></img>
                     <div className="title_container">
                         <h2>{props.data.data.title}</h2>
                     </div>
