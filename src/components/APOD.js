@@ -1,14 +1,20 @@
-import React, {useState} from "react";
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import React, {useState, Fragment} from "react";
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import { Calendar } from 'react-date-range';
 import "./APOD.scss"
+import formatDate from "../formatDate";
 
 const APOD = props => {
     const [datePopup, setDatePopup] = useState(false);
     const changeDate = date => {
         props.setDate(date);
         setDatePopup(false);
+    }
+    const sameDate = (date1,date2) => {
+        if (date1.getYear() === date2.getYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate()) { return true;
+        }
+        else { return false }
     }
     if (props.data && props.data.data) {
         const dateRange = {
@@ -17,10 +23,6 @@ const APOD = props => {
             exclude: [new Date("June 17, 1995"), new Date("June 18, 1995"), new Date("June 19, 1995")]
         }
         return(
-            // date must be between Jun 16, 1995 and {today}
-            //a couple dates have no image, so build missing/error handler
-            //June 20 1995: Pleiades Star Cluster - June 16 1995
-            //no image returns "code":400
             <div className="apod_container">
                 {(datePopup===true)?
                     <div className="calendar_container">
@@ -30,15 +32,49 @@ const APOD = props => {
                     :null}
                 {/* break this out into a component */}
                 <div className="apod_controls">
-                    <p className="apod_control" onClick={()=>props.setDate(dateRange.startDate)}>|&lt; first</p>
-                    <p className="apod_control" onClick={()=>props.setDate(new Date(props.date.setDate(props.date.getDate()-1)))}>&lt; previous</p>
-                    <p className="apod_control" onClick={()=>setDatePopup(true)}>pick date</p>
-                    <p className="apod_control" onClick={()=>props.setDate(new Date(props.date.setDate(props.date.getDate()+1)))}>next &gt;</p>
-                    <p className="apod_control" onClick={()=>props.setDate(dateRange.endDate)}>last &gt;|</p>
+                    {
+                    (sameDate(props.date,dateRange.startDate)) ?
+                        <Fragment>
+                        <p className="apod_control">|&lt; first</p>
+                        <p className="apod_control">&lt; previous</p>
+                        </Fragment>
+                        :
+                        <Fragment>
+                        <p className="apod_control enabled" onClick={()=>props.setDate(dateRange.startDate)}>|&lt; first</p>
+                        <p className="apod_control enabled" onClick={()=>props.setDate(new Date(props.date.setDate(props.date.getDate()-1)))}>&lt; previous</p>
+                        </Fragment>
+                    }
+
+                    <p className="apod_control enabled" onClick={()=>setDatePopup(true)}>pick date</p>
+
+                    {
+                    (sameDate(props.date,new Date())) ?
+                        <Fragment>
+                        <p className="apod_control">next &gt;</p>
+                        <p className="apod_control">last &gt;|</p>
+                        </Fragment>
+                        :
+                        <Fragment>
+                        <p className="apod_control enabled" onClick={()=>props.setDate(new Date(props.date.setDate(props.date.getDate()+1)))}>next &gt;</p>
+                        <p className="apod_control enabled" onClick={()=>props.setDate(dateRange.endDate)}>last &gt;|</p>
+                        </Fragment>
+                    }                    
                 </div>
                 {/* end component */}
+                <p className="date_indicator">
+                    {formatDate(props.date)}
+                </p>
                 <div className="image_container">
-                    <img src={props.data.data.url} alt={props.data.data.title}></img>
+                    {(props.data.data.media_type === "image")?
+                        <img src={props.data.data.url} alt={props.data.data.title}></img>
+                        :
+                        null
+                    }
+                    {(props.data.data.media_type === "video")?
+                        <object data={props.data.data.url} aria-label={props.data.data.title}></object>
+                        :
+                        null
+                    }
                     <div className="title_container">
                         <h2>{props.data.data.title}</h2>
                     </div>
@@ -46,6 +82,11 @@ const APOD = props => {
                 <div className="explanation_container">
                     <h3>About this image:</h3>
                     <p>{props.data.data.explanation}</p>
+                    {(props.data.data.copyright)?
+                        <p>copyright: {props.data.data.copyright}</p>
+                        :
+                        null
+                    }
                 </div>
             </div>
         )

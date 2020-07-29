@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import "./Background.scss";
 
-const Background = () => {
+const Background = memo(() => {
     //stars is array of dom elements with random positions
     const stars = new Array(150).fill(0).map(s=>{
         return({
@@ -24,5 +24,5 @@ const Background = () => {
         }   
         </div>
     )
-}
+});
 export default Background;
