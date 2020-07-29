@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import APOD from "./components/APOD";
@@ -10,25 +10,32 @@ import formatDate from "./formatDate";
 
 function App() {
   const [date, setDate] = useState(new Date());
-  const [data,setData] = useState({});
-  useEffect(()=>{
+  const [data, setData] = useState({});
+  useEffect(() => {
     //production code
-    const getData = async() => {
-      axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_APOD_API_KEY}&date=${formatDate(date)}`).then(r=>setData(r)).catch(e=>{
-        console.log(e);
-        setData({
-          data: {
-            title: "error: no image found",
-            explanation: "something went wrong, sorry",
-            date: date,
-            copyright: "",
-            hdurl: "",
-            media_type: "image",
-            url: "black.png"
-          }
-        })
-      });
-    }
+    const getData = async () => {
+      axios
+        .get(
+          `https://api.nasa.gov/planetary/apod?api_key=${
+            process.env.REACT_APP_NASA_APOD_API_KEY
+          }&date=${formatDate(date)}`
+        )
+        .then((r) => setData(r))
+        .catch((e) => {
+          console.log(e);
+          setData({
+            data: {
+              title: "error: no image found",
+              explanation: "something went wrong, sorry",
+              date: date,
+              copyright: "",
+              hdurl: "",
+              media_type: "image",
+              url: "black.png",
+            },
+          });
+        });
+    };
     getData();
     //end production code
 
@@ -46,7 +53,7 @@ function App() {
     //     "status":200,"statusText":"OK","headers":{"content-type":"application/json"},"config":{"url":"https://api.nasa.gov/planetary/apod?api_key=2tHL7PTeXk91n3n1G7DcZtgEMAbC5VzzpLmh0BvF","method":"get","headers":{"Accept":"application/json, text/plain, */*"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1},"request":{}}`)
     // )
     //end dev code
-  },[date]);
+  }, [date]);
   return (
     <div className="App">
       <Header />
