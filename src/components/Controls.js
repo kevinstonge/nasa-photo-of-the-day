@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import "./Controls.scss";
+import { StyledButton } from "./styles/Styles";
 import { Calendar } from "react-date-range";
 
 const Controls = (props) => {
@@ -45,19 +45,19 @@ const Controls = (props) => {
       <div className="apod_controls">
         {sameDate(props.date, dateRange.startDate) ? (
           <Fragment>
-            <p className="apod_control">|&lt; first</p>
-            <p className="apod_control">&lt; previous</p>
+            <StyledButton>|&lt; first</StyledButton>
+            <StyledButton>&lt; previous</StyledButton>
           </Fragment>
         ) : (
           <Fragment>
-            <p
-              className="apod_control enabled"
+            <StyledButton
+              className="enabled"
               onClick={() => props.setDate(dateRange.startDate)}
             >
               |&lt; first
-            </p>
-            <p
-              className="apod_control enabled"
+            </StyledButton>
+            <StyledButton
+              className="enabled"
               onClick={() =>
                 props.setDate(
                   new Date(props.date.setDate(props.date.getDate() - 1))
@@ -65,7 +65,7 @@ const Controls = (props) => {
               }
             >
               &lt; previous
-            </p>
+            </StyledButton>
           </Fragment>
         )}
 
@@ -75,13 +75,13 @@ const Controls = (props) => {
 
         {sameDate(props.date, new Date()) ? (
           <Fragment>
-            <p className="apod_control">next &gt;</p>
-            <p className="apod_control">last &gt;|</p>
+            <StyledButton>next &gt;</StyledButton>
+            <StyledButton className="apod_control">last &gt;|</StyledButton>
           </Fragment>
         ) : (
           <Fragment>
-            <p
-              className="apod_control enabled"
+            <StyledButton
+              className="enabled"
               onClick={() =>
                 props.setDate(
                   new Date(props.date.setDate(props.date.getDate() + 1))
@@ -89,13 +89,13 @@ const Controls = (props) => {
               }
             >
               next &gt;
-            </p>
-            <p
-              className="apod_control enabled"
+            </StyledButton>
+            <StyledButton
+              className="enabled"
               onClick={() => props.setDate(dateRange.endDate)}
             >
               last &gt;|
-            </p>
+            </StyledButton>
           </Fragment>
         )}
       </div>
