@@ -1,0 +1,18 @@
+$bg: #222;
+$fg: #eee;
+@mixin sflex {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+@mixin glowBox($glowColor) {
+    box-shadow: -0.1rem -0.1rem 0.8rem 0 $glowColor, inset -0.1rem -0.1rem 0.1rem 0 darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem 0 lighten($glowColor,20%);
+}
+
+@mixin glowBoxHover($glowColor) {
+    &:hover {
+        box-shadow: -0.1rem -0.1rem 1.5rem lighten($glowColor,10%), inset -0.1rem -0.1rem 0.1rem darken($glowColor,20%), inset 0.1rem 0.1rem 0.1rem lighten($glowColor,20%);
+    }
+}

@@ -1,0 +1,21 @@
+@import "../base";
+.apod_controls {
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .apod_control {
+    background-color: #222;
+    color: #aea;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+  }
+  .apod_control.enabled {
+    @include glowBox(#eae);
+    @include glowBoxHover(#eae);
+    cursor: url("../../src/hand.png"), pointer;
+  }
+  .apod_control :not(.enabled) {
+    @include glowBox(rgba(0, 0, 0, 0));
+  }
+}

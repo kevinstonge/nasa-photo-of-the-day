@@ -1,0 +1,81 @@
+@import "../base";
+.apod_container {
+    @include sflex;
+    .calendar_container {
+        position: fixed;
+        top: 5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        @include glowBox(white);
+        button {
+            padding: 0.5rem;
+        }
+    }
+    .apod_controls {
+        width: 60vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .apod_control {
+            background-color: #222;
+            color: #aea;
+            padding: 0.5rem 1rem;
+            border-radius: 50%;
+        }
+        .apod_control.enabled {
+            @include glowBox(#eae);
+            @include glowBoxHover(#eae);
+            cursor: url('../../src/hand.png'), pointer;
+        }
+        .apod_control :not(.enabled) {
+            @include glowBox(rgba(0,0,0,0));
+            cursor: default;
+        }
+    }
+    .date_indicator {
+        margin-bottom: 1rem;
+        margin-top: 0.2rem;
+        color: #aea;
+        font-weight: bold;
+    }
+    .image_container {
+        @include glowBox(white);
+        width: 60vw;
+        padding: 1rem;
+        background-color: white;
+        img {
+            padding: 0;
+            width: 100%;
+            border-radius: 0.5rem;
+            border: 0.1rem inset white;
+        }
+        object {
+            padding: 0;
+            width: 100%;
+            height: calc(60vw * 0.5625);
+            border-radius: 0.5rem;
+            border: 0.1rem inset white;
+        }
+        .title_container {
+            width: 100%;
+            color: black;
+            h2 {
+                margin: 0;
+                padding-top: 0.5rem;
+                padding-bottom: 1.5rem;
+            }
+        }
+    }
+    .explanation_container {
+        width: 60vw;
+        margin-top: 2rem;
+        @include glowBox(#eae);
+        background-color: #222;
+        color: #aea;
+        font-size: 0.9rem;
+        padding: 0 1rem;
+        text-align: left;
+    }
+}
